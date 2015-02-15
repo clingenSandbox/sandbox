@@ -1,0 +1,135 @@
+{
+  "domain": "regexp(UPD[0-9]{6})",
+  "unique": true,
+  "required": true,
+  "description": "Document ID.",
+  "properties": [
+    {
+      "domain": "string",
+      "required": true,
+      "category": true,
+      "description": "UniProt or similar human readable protein name.",
+      "properties": [
+        {
+          "domain": "string",
+          "description": "Primary HGNC Gene Name",
+          "name": "GeneSymbol"
+        },
+        {
+          "domain": "string",
+          "required": true,
+          "description": "UniProt Primary (1st) accession",
+          "name": "UniProtAccession"
+        },
+        {
+          "domain": "string",
+          "required": true,
+          "description": "NCBI Protein RefSeq accession (important that both uniprot and refseq accessions are for identical protein sequneces)",
+          "name": "RefSeqAccession"
+        },
+        {
+          "domain": "[valueless]",
+          "category": true,
+          "description": "Need? Should be same as RefSeq Accession if you have that? There are multiple transcripts so you need one or the other to know which you are looking at.",
+          "properties": [
+            {
+              "domain": "string",
+              "name": "chr"
+            },
+            {
+              "domain": "posInt",
+              "name": "start"
+            },
+            {
+              "domain": "posInt",
+              "name": "end"
+            }
+          ],
+          "name": "TranscriptLocation",
+          "fixed": true
+        },
+        {
+          "domain": "string",
+          "required": true,
+          "description": "URL to souce such a uniprot website for accession",
+          "name": "UniProtURL"
+        },
+        {
+          "domain": "date",
+          "required": true,
+          "description": "When data last updated?",
+          "name": "LastUpdateDate"
+        }
+      ],
+      "name": "Protein"
+    },
+    {
+      "domain": "string",
+      "description": "General function(s) of a protein from UniProt CC-function lines",
+      "name": "ProteinFunction"
+    },
+    {
+      "domain": "string",
+      "category": true,
+      "items": [
+        {
+          "domain": "string",
+          "category": true,
+          "properties": [
+            {
+              "domain": "string",
+              "name": "type"
+            },
+            {
+              "domain": "string",
+              "description": "Specific Feature name/description ie (PDZ domain-binding)",
+              "name": "name"
+            },
+            {
+              "domain": "[valueless]",
+              "category": true,
+              "properties": [
+                {
+                  "domain": "posInt",
+                  "description": "Start Position on Protein Sequence",
+                  "name": "start"
+                },
+                {
+                  "domain": "posInt",
+                  "description": "End Position on Protein Sequence (can be same as start)",
+                  "name": "end"
+                }
+              ],
+              "name": "proteinSeqCoordinates",
+              "fixed": true
+            },
+            {
+              "domain": "[valueless]",
+              "category": true,
+              "properties": [
+                {
+                  "domain": "posInt",
+                  "description": "A domain can traverse multiple exons here I mark all so many starts and stops. Is there a simpler way?",
+                  "name": "start"
+                },
+                {
+                  "domain": "posInt",
+                  "name": "end"
+                }
+              ],
+              "name": "genomicCoordinates",
+              "fixed": true
+            }
+          ],
+          "identifier": true,
+          "name": "feature"
+        }
+      ],
+      "description": "UniProt or similar Feature type name ie \"DOMAIN\" (if just for uniprot caould be enumerted)",
+      "name": "featureList",
+      "fixed": true
+    }
+  ],
+  "identifier": true,
+  "name": "DocumentID"
+}

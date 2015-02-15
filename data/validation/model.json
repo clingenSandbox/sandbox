@@ -1,0 +1,848 @@
+{
+  "domain": "regexp(GCD[0-9]{6})",
+  "unique": true,
+  "required": true,
+  "description": "Document ID. Starts with GCD and then 6 digits",
+  "properties": [
+    {
+      "domain": "string",
+      "name": "geneSymbol"
+    },
+    {
+      "domain": "[valueless]",
+      "category": true,
+      "items": [
+        {
+          "domain": "string",
+          "category": true,
+          "identifier": true,
+          "name": "geneAliase"
+        }
+      ],
+      "name": "geneAliases",
+      "fixed": true
+    },
+    {
+      "domain": "string",
+      "required": true,
+      "description": "OMIM approved disease name (http://www.ncbi.nlm.nih.gov/omim) - until we decide which is the main ontology or ontologies to use.",
+      "name": "diseaseID"
+    },
+    {
+      "domain": "string",
+      "name": "diseaseName"
+    },
+    {
+      "domain": "[valueless]",
+      "category": true,
+      "items": [
+        {
+          "domain": "string",
+          "category": true,
+          "identifier": true,
+          "name": "diseaseAliase"
+        }
+      ],
+      "name": "diseaseAliases",
+      "fixed": true
+    },
+    {
+      "domain": "[valueless]",
+      "category": true,
+      "items": [
+        {
+          "domain": "string",
+          "category": true,
+          "identifier": true,
+          "name": "record"
+        }
+      ],
+      "name": "OMIMRecords",
+      "fixed": true
+    },
+    {
+      "domain": "string",
+      "required": true,
+      "description": "Ultimately this will be automatically generated but for now it could be useful to store the PubMed search query",
+      "name": "pubmedSearchQuery"
+    },
+    {
+      "domain": "date",
+      "required": true,
+      "name": "dateOfLitSearch"
+    },
+    {
+      "domain": "posInt",
+      "required": true,
+      "name": "numReturnedSearchResults",
+      "default": 0
+    },
+    {
+      "domain": "posInt",
+      "required": true,
+      "name": "numIndependentClinicalReports",
+      "default": 0
+    },
+    {
+      "domain": "enum(< 1hr,1 - 2hr,2 - 3hr,3 - 4hr,4 - 5hr,> 5hr)",
+      "required": true,
+      "name": "timeToComplete",
+      "default": "1 - 2hr"
+    },
+    {
+      "domain": "[valueless]",
+      "category": true,
+      "items": [
+        {
+          "domain": "regexp(PMID\\:[0-9]+|OTHER\\:\\S+)",
+          "category": true,
+          "description": "eg: PMID:123445 . If not pmid, then OTHER:a1234",
+          "properties": [
+            {
+              "domain": "enum(For pathogenicity,Against pathogenicity)",
+              "name": "evidenceCategory",
+              "default": "For pathogenicity"
+            },
+            {
+              "domain": "[valueless]",
+              "category": true,
+              "properties": [
+                {
+                  "domain": "enum(PMID, Dissertation, Personal Corrrespondence, Website, Other)",
+                  "name": "referenceType",
+                  "default": "PMID"
+                },
+                {
+                  "domain": "string",
+                  "name": "author"
+                },
+                {
+                  "domain": "intRange(1900, 2025)",
+                  "description": "only years within the range are allowed",
+                  "name": "year",
+                  "default": 1999
+                },
+                {
+                  "domain": "string",
+                  "name": "journal"
+                },
+                {
+                  "domain": "boolean",
+                  "name": "isFirstPublication"
+                }
+              ],
+              "name": "referenceInfo",
+              "fixed": true
+            }
+          ],
+          "identifier": true,
+          "name": "reference"
+        }
+      ],
+      "name": "referenceList",
+      "fixed": true
+    },
+    {
+      "domain": "[valueless]",
+      "category": true,
+      "items": [
+        {
+          "domain": "string",
+          "category": true,
+          "properties": [
+            {
+              "domain": "[valueless]",
+              "category": true,
+              "items": [
+                {
+                  "domain": "string",
+                  "category": true,
+                  "properties": [
+                    {
+                      "domain": "posInt",
+                      "properties": [
+                        {
+                          "domain": "[valueless]",
+                          "category": true,
+                          "items": [
+                            {
+                              "domain": "string",
+                              "category": true,
+                              "properties": [
+                                {
+                                  "domain": "string",
+                                  "name": "PrimaryOutcome"
+                                },
+                                {
+                                  "domain": "enum(Famalial, Sporadic)",
+                                  "name": "OutcomeType"
+                                },
+                                {
+                                  "domain": "[valueless]",
+                                  "category": true,
+                                  "items": [
+                                    {
+                                      "domain": "string",
+                                      "category": true,
+                                      "properties": [
+                                        {
+                                          "domain": "posInt",
+                                          "name": "TotalNumberScreened"
+                                        },
+                                        {
+                                          "domain": "posInt",
+                                          "name": "TotalNumberScreenedUnrelated"
+                                        },
+                                        {
+                                          "domain": "posInt",
+                                          "name": "TotalNumberWithVariants"
+                                        },
+                                        {
+                                          "domain": "posInt",
+                                          "name": "TotalNumberWithVariantsUnrelated"
+                                        },
+                                        {
+                                          "domain": "posInt",
+                                          "name": "numMales"
+                                        },
+                                        {
+                                          "domain": "posInt",
+                                          "name": "numFemales"
+                                        },
+                                        {
+                                          "domain": "posInt",
+                                          "name": "MeanAge"
+                                        },
+                                        {
+                                          "domain": "posInt",
+                                          "name": "MeanAgeofOnset"
+                                        },
+                                        {
+                                          "domain": "string",
+                                          "name": "CountryofOrigin"
+                                        },
+                                        {
+                                          "domain": "string",
+                                          "name": "Ethnicity"
+                                        },
+                                        {
+                                          "domain": "enum(White, African-American, American Indian or Alaska Native, Asian, Native Hawaiian, Other Pacific Islander)",
+                                          "name": "Race"
+                                        }
+                                      ],
+                                      "identifier": true,
+                                      "name": "subjectID"
+                                    }
+                                  ],
+                                  "name": "Subjects",
+                                  "fixed": true
+                                },
+                                {
+                                  "domain": "[valueless]",
+                                  "category": true,
+                                  "items": [
+                                    {
+                                      "domain": "string",
+                                      "category": true,
+                                      "properties": [
+                                        {
+                                          "domain": "posInt",
+                                          "name": "TotalnumAffected"
+                                        },
+                                        {
+                                          "domain": "posInt",
+                                          "name": "TotalnumAffectedUnrelated"
+                                        }
+                                      ],
+                                      "identifier": true,
+                                      "name": "AlleleID"
+                                    }
+                                  ],
+                                  "name": "Alleles",
+                                  "fixed": true
+                                },
+                                {
+                                  "domain": "string",
+                                  "category": true,
+                                  "items": [
+                                    {
+                                      "domain": "string",
+                                      "category": true,
+                                      "properties": [
+                                        {
+                                          "domain": "posInt",
+                                          "name": "numfamilies"
+                                        },
+                                        {
+                                          "domain": "[valueless]",
+                                          "category": true,
+                                          "items": [
+                                            {
+                                              "domain": "string",
+                                              "category": true,
+                                              "properties": [
+                                                {
+                                                  "domain": "posInt",
+                                                  "name": "familySize"
+                                                },
+                                                {
+                                                  "domain": "enum(Autosomal Dominant,Autosomal Recessive,X-linked, de Novo,other,unknown)",
+                                                  "name": "segregationPattern"
+                                                },
+                                                {
+                                                  "domain": "[valueless]",
+                                                  "category": true,
+                                                  "items": [
+                                                    {
+                                                      "domain": "enum(phenotypePositiveGenotypePositive,phenotypeNegativeGenotypePositive,phenotypeUnknownGenotypePositive,phenotypePositiveGenotypeNegative,phenotypeNegativeGenotypeNegative,phenotypeUnkownGenotypeNegative,phenotypePositiveGenotypeUnknown,phenotypeNegativeGenotypeUnknown,phenotypeUnknownGenotypeUnknown)",
+                                                      "category": true,
+                                                      "properties": [
+                                                        {
+                                                          "domain": "posInt",
+                                                          "name": "count"
+                                                        },
+                                                        {
+                                                          "domain": "string",
+                                                          "name": "addtional_info"
+                                                        }
+                                                      ],
+                                                      "identifier": true,
+                                                      "name": "type"
+                                                    }
+                                                  ],
+                                                  "name": "phenotypeGenotypeRelationship",
+                                                  "fixed": true
+                                                }
+                                              ],
+                                              "identifier": true,
+                                              "name": "familyID"
+                                            }
+                                          ],
+                                          "name": "Families",
+                                          "fixed": true
+                                        }
+                                      ],
+                                      "identifier": true,
+                                      "name": "segDataID"
+                                    }
+                                  ],
+                                  "name": "segDataforAllele",
+                                  "fixed": true
+                                }
+                              ],
+                              "identifier": true,
+                              "name": "caseGroupID"
+                            }
+                          ],
+                          "name": "CaseGroup",
+                          "fixed": true
+                        }
+                      ],
+                      "name": "numCaseGroups"
+                    }
+                  ],
+                  "identifier": true,
+                  "name": "caseDataID"
+                }
+              ],
+              "name": "CaseData",
+              "fixed": true
+            },
+            {
+              "domain": "[valueless]",
+              "category": true,
+              "items": [
+                {
+                  "domain": "string",
+                  "category": true,
+                  "properties": [
+                    {
+                      "domain": "string",
+                      "name": "PrimaryOutcome"
+                    },
+                    {
+                      "domain": "enum(Famalial, Sporadic)",
+                      "name": "OutcomeType"
+                    },
+                    {
+                      "domain": "[valueless]",
+                      "category": true,
+                      "items": [
+                        {
+                          "domain": "string",
+                          "category": true,
+                          "properties": [
+                            {
+                              "domain": "posInt",
+                              "name": "TotalNumberScreened"
+                            },
+                            {
+                              "domain": "posInt",
+                              "name": "TotalNumberScreenedUnrelated"
+                            },
+                            {
+                              "domain": "posInt",
+                              "name": "TotalNumberWithVariants"
+                            },
+                            {
+                              "domain": "posInt",
+                              "name": "TotalNumberWithVariantsUnrelated"
+                            },
+                            {
+                              "domain": "posInt",
+                              "name": "numMales"
+                            },
+                            {
+                              "domain": "posInt",
+                              "name": "numFemales"
+                            },
+                            {
+                              "domain": "posInt",
+                              "name": "MeanAge"
+                            },
+                            {
+                              "domain": "string",
+                              "name": "CountryofOrigin"
+                            },
+                            {
+                              "domain": "string",
+                              "name": "Ethnicity"
+                            },
+                            {
+                              "domain": "enum(NIH race list)",
+                              "name": "Race"
+                            }
+                          ],
+                          "identifier": true,
+                          "name": "CaesubjectID"
+                        }
+                      ],
+                      "name": "CaseSubjects",
+                      "fixed": true
+                    },
+                    {
+                      "domain": "[valueless]",
+                      "category": true,
+                      "items": [
+                        {
+                          "domain": "string",
+                          "category": true,
+                          "properties": [
+                            {
+                              "domain": "posInt",
+                              "name": "TotalNumberScreened"
+                            },
+                            {
+                              "domain": "posInt",
+                              "name": "TotalNumberScreenedUnrelated"
+                            },
+                            {
+                              "domain": "posInt",
+                              "name": "TotalNumberWithVariants"
+                            },
+                            {
+                              "domain": "posInt",
+                              "name": "TotalNumberWithVariantsUnrelated"
+                            },
+                            {
+                              "domain": "posInt",
+                              "name": "TotalNumberControlGroups"
+                            },
+                            {
+                              "domain": "posInt",
+                              "name": "numMales"
+                            },
+                            {
+                              "domain": "posInt",
+                              "name": "numFemales"
+                            },
+                            {
+                              "domain": "posInt",
+                              "name": "MeanAge"
+                            },
+                            {
+                              "domain": "string",
+                              "name": "CountryofOrigin"
+                            },
+                            {
+                              "domain": "string",
+                              "name": "Ethnicity"
+                            },
+                            {
+                              "domain": "enum(White, African-American, American Indian or Alaska Native, Asian, Native Hawaiian, Other Pacific Islander)",
+                              "name": "Race"
+                            }
+                          ],
+                          "identifier": true,
+                          "name": "id"
+                        }
+                      ],
+                      "name": "ControlSubjects",
+                      "fixed": true
+                    },
+                    {
+                      "domain": "[valueless]",
+                      "category": true,
+                      "items": [
+                        {
+                          "domain": "string",
+                          "category": true,
+                          "properties": [
+                            {
+                              "domain": "posInt",
+                              "name": "TotalnumAffected"
+                            },
+                            {
+                              "domain": "posInt",
+                              "name": "TotalnumAffectedUnrelated"
+                            }
+                          ],
+                          "identifier": true,
+                          "name": "alleleID"
+                        }
+                      ],
+                      "name": "CaseAlleles",
+                      "fixed": true
+                    },
+                    {
+                      "domain": "[valueless]",
+                      "category": true,
+                      "items": [
+                        {
+                          "domain": "string",
+                          "category": true,
+                          "properties": [
+                            {
+                              "domain": "posInt",
+                              "name": "Totalnum"
+                            },
+                            {
+                              "domain": "posInt",
+                              "name": "TotalnumUnrelated"
+                            },
+                            {
+                              "domain": "posInt",
+                              "name": "TotalnumUnrelatedWithVariant"
+                            }
+                          ],
+                          "identifier": true,
+                          "name": "alleleID"
+                        }
+                      ],
+                      "name": "ControlAlleles",
+                      "fixed": true
+                    },
+                    {
+                      "domain": "[valueless]",
+                      "category": true,
+                      "items": [
+                        {
+                          "domain": "string",
+                          "category": true,
+                          "properties": [
+                            {
+                              "domain": "boolean",
+                              "name": "GermlineOrSomatic"
+                            },
+                            {
+                              "domain": "boolean",
+                              "name": "Part of genome-wide study? (Y/N)"
+                            },
+                            {
+                              "domain": "enum(Genome-wide, Specific gene sequenced, Specific mutations genotyped)",
+                              "name": "GenotypingMethod"
+                            },
+                            {
+                              "domain": "string",
+                              "name": "SampleCharacteristics"
+                            }
+                          ],
+                          "identifier": true,
+                          "name": "id"
+                        }
+                      ],
+                      "name": "CaseExpt",
+                      "fixed": true
+                    },
+                    {
+                      "domain": "[valueless]",
+                      "category": true,
+                      "items": [
+                        {
+                          "domain": "string",
+                          "category": true,
+                          "properties": [
+                            {
+                              "domain": "boolean",
+                              "name": "GermlineOrSomatic"
+                            },
+                            {
+                              "domain": "boolean",
+                              "name": "Part of genome-wide study? (Y/N)"
+                            },
+                            {
+                              "domain": "enum(Genome-wide, Specific gene sequenced, Specific mutations genotyped)",
+                              "name": "GenotypingMethod"
+                            },
+                            {
+                              "domain": "string",
+                              "name": "SampleCharacteristics"
+                            }
+                          ],
+                          "identifier": true,
+                          "name": "id"
+                        }
+                      ],
+                      "name": "ControlExpt",
+                      "fixed": true
+                    },
+                    {
+                      "domain": "[valueless]",
+                      "category": true,
+                      "properties": [
+                        {
+                          "domain": "string",
+                          "name": "typeOfStatisticalAnalysis"
+                        },
+                        {
+                          "domain": "boolean",
+                          "name": "pvalue"
+                        },
+                        {
+                          "domain": "string",
+                          "name": "authorsConclusions"
+                        },
+                        {
+                          "domain": "string",
+                          "name": "curatorNotes"
+                        }
+                      ],
+                      "name": "result",
+                      "fixed": true
+                    }
+                  ],
+                  "identifier": true,
+                  "name": "id"
+                }
+              ],
+              "name": "CaseControl",
+              "fixed": true
+            },
+            {
+              "domain": "[valueless]",
+              "category": true,
+              "items": [
+                {
+                  "domain": "string",
+                  "category": true,
+                  "properties": [
+                    {
+                      "domain": "[valueless]",
+                      "category": true,
+                      "items": [
+                        {
+                          "domain": "string",
+                          "category": true,
+                          "properties": [
+                            {
+                              "domain": "enum(Expression data,Biochemical Interactions,Biochemical Functions,CelluIar assays of gene disruption,Animal models of gene disruption,Computational modeling,Other)",
+                              "name": "type"
+                            },
+                            {
+                              "domain": "string",
+                              "name": "description"
+                            }
+                          ],
+                          "identifier": true,
+                          "name": "GenelevelfunctionalDataId"
+                        }
+                      ],
+                      "name": "GenelevelfunctionalData",
+                      "fixed": true
+                    },
+                    {
+                      "domain": "string",
+                      "category": true,
+                      "items": [
+                        {
+                          "domain": "string",
+                          "category": true,
+                          "properties": [
+                            {
+                              "domain": "enum(Expression data,Biochemical Interactions,Biochemical Functions,CelluIar assays of gene disruption,Animal models of gene disruption,Computational modeling,Other)",
+                              "name": "type"
+                            },
+                            {
+                              "domain": "string",
+                              "name": "description"
+                            }
+                          ],
+                          "identifier": true,
+                          "name": "VariantlevelfunctionalDataId"
+                        }
+                      ],
+                      "name": "VariantlevelfunctionalData",
+                      "fixed": true
+                    }
+                  ],
+                  "identifier": true,
+                  "name": "FunctionalDataId"
+                }
+              ],
+              "name": "functionalData",
+              "fixed": true
+            },
+            {
+              "domain": "string",
+              "category": true,
+              "properties": [
+                {
+                  "domain": "posInt",
+                  "description": "Ozge & Heidi: Calling all loss of function variants as pathogenic can be misleading, since there may be genes that have loss of function variants frequent in the general population, the variant may only affect a minor transcript, etc. Heidi: it would be useful to note LOF or deleterious variants like this, without concluding they are pathogenic for the disorder being evaluated given that not all genes cause disease though LOFs",
+                  "name": "numClearlyPathogenicVariants",
+                  "default": 0
+                },
+                {
+                  "domain": "posInt",
+                  "name": "numMissenseVariantsWithCompellingEvidence",
+                  "default": 0
+                },
+                {
+                  "domain": "posInt",
+                  "name": "numOtherVariantsWithWeakEvidence",
+                  "default": 0
+                },
+                {
+                  "domain": "string",
+                  "category": true,
+                  "items": [
+                    {
+                      "domain": "string",
+                      "category": true,
+                      "properties": [
+                        {
+                          "domain": "string",
+                          "name": "variant"
+                        },
+                        {
+                          "domain": "string",
+                          "name": "AssociatedClinvarRecord"
+                        },
+                        {
+                          "domain": "string",
+                          "name": "ClinvarAssertion"
+                        },
+                        {
+                          "domain": "regexp(ClinVar\\:SCV\\d{9}\\.\\d|dbVar\\:(n|e)ssv\\d{1,9})",
+                          "description": "Xin - you'll need to check my regex, thanks!!!",
+                          "name": "variantAlleleID"
+                        },
+                        {
+                          "domain": "string",
+                          "name": "HGVSExpression"
+                        },
+                        {
+                          "domain": "string",
+                          "name": "NCBIAccession"
+                        },
+                        {
+                          "domain": "string",
+                          "category": true,
+                          "items": [
+                            {
+                              "domain": "string",
+                              "category": true,
+                              "properties": [
+                                {
+                                  "domain": "floatRange(0,1)",
+                                  "name": "value",
+                                  "default": 0
+                                },
+                                {
+                                  "domain": "enum(EVS, 1000Genomes)",
+                                  "name": "source"
+                                }
+                              ],
+                              "identifier": true,
+                              "name": "frequencyID"
+                            }
+                          ],
+                          "description": "??? from EVS 1000Genomes etc. Can this be pulled in from the variantAlleleID?",
+                          "name": "populationFrequency",
+                          "fixed": true
+                        },
+                        {
+                          "domain": "string",
+                          "category": true,
+                          "items": [
+                            {
+                              "domain": "enum(simple case report,case w/ control,functional,in silico prediction,gene region,type of variant,segregation data,lack of variants in controls)",
+                              "category": true,
+                              "identifier": true,
+                              "name": "level"
+                            }
+                          ],
+                          "name": "levelOfEvidence",
+                          "fixed": true
+                        }
+                      ],
+                      "identifier": true,
+                      "name": "variantID"
+                    }
+                  ],
+                  "name": "variantsIdentified",
+                  "fixed": true
+                }
+              ],
+              "name": "pathogenicityOfReportedVariants",
+              "fixed": true
+            }
+          ],
+          "identifier": true,
+          "name": "evidence"
+        }
+      ],
+      "name": "evidenceList",
+      "fixed": true
+    },
+    {
+      "domain": "string",
+      "name": "numIndependentEvidenceForAssertion"
+    },
+    {
+      "domain": "string",
+      "name": "numPathogenicVariants"
+    },
+    {
+      "domain": "string",
+      "name": "numUnrelatedProbandsWithPathogenicVariants"
+    },
+    {
+      "domain": "string",
+      "name": "numCaseControlOR5"
+    },
+    {
+      "domain": "string",
+      "name": "numCaseControl_2_OR_5"
+    },
+    {
+      "domain": "string",
+      "name": "numCaseControl_ORlessthan2"
+    },
+    {
+      "domain": "string",
+      "name": "predictedFunctionalFor"
+    },
+    {
+      "domain": "string",
+      "name": "demonstratedFunctionalFor"
+    },
+    {
+      "domain": "enum(Definitive, Strong, Moderate, Limited, No Reported Evidence, Disputed, Evidence Against)",
+      "category": true,
+      "name": "GeneDiseaseAssertion"
+    }
+  ],
+  "identifier": true,
+  "name": "DocumentID"
+}

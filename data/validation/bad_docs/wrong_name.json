@@ -1,0 +1,25 @@
+{
+  "DocumentID": {
+    "value": "GCD000011",
+    "propertie": {
+      "diseaseID": {
+        "value": ""
+      },
+      "numReturnedSearchResults": {
+        "value": 1
+      },
+      "dateOfLitSearch": {
+        "value": "2014/11/10"
+      },
+      "numIndependentClinicalReports": {
+        "value": 1
+      },
+      "timeToComplete": {
+        "value": "1 - 2hr"
+      },
+      "pubmedSearchQuery": {
+        "value": ""
+      }
+    }
+  }
+}
